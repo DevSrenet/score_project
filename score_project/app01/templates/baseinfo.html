@@ -1,0 +1,32 @@
+{%extends 'index.html'%}
+{%block page-baseinfo%}
+
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">运维系统导航</div>
+		  <div class="panel-body">
+<!-- Standard button -->
+<button type="button" class="btn btn-default"><a href="#">xxx</a></button>
+<button type="button" class="btn btn-default"><a href="#">在线人数</a></button>
+<button type="button" class="btn btn-default"><a href="#">监控系统</a></button>
+<button type="button" class="btn btn-default"><a href="#">workflow</a></button>
+<button type="button" class="btn btn-default"><a href="#">文件地址</a></button>
+
+		  </div>
+
+		  <!-- List group -->
+		</div>
+
+{% for base in baseinfo%}
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">{{base.title}}</div>
+		  <div class="panel-body">
+		    <pre>{{ base.content }}</pre>
+		  </div>
+
+		  <!-- List group -->
+		</div>
+{% endfor %}
+
+{%endblock%}

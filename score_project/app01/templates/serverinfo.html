@@ -1,0 +1,68 @@
+	<div class="panel panel-success">
+      <!-- Default panel contents -->
+      <!-- Table -->
+      <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>服务器id</th>
+            <th>名称</th>
+            <th>角色</th>
+            <th>服务</th>
+            <th>内网ip</th>
+            <th>外网ip</th>
+            <th>版本号</th>
+            <th>服务状态</th>
+            <th>LBC地址</th>
+            <th>gm地址</th>
+			      <th>docker</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+{%for item in serverinfo%}
+          <tr>
+            <th scope="row">{{item.serverid}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.role}}</td>
+            <td>{{item.service}}</td>
+            <td>{{item.internalip}}</td>
+            <td>{{item.externalip}}</td>
+            <td>{{item.version}}</td>
+            <td>
+              {%if item.status == 0 %}
+              <span class="label label-default">running</span>
+              {%endif%}
+              {%if item.status == 1 %}
+              <span class="label label-success">error</span>
+              {%endif%}
+            </td>
+            <td>{{item.domain}}</td>
+            <td>
+              {%if item.service == "game"%}
+              <a href="{{item.gm}}">跳转</a>
+              {%endif%}
+            </td>
+            <td>
+              {%if item.service == "game"%}
+                <div class="btn-group">
+                  <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    进入终端 <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                  {%for p in dockerinfo%}
+                  {%ifequal p.server.serverid item.serverid%}
+                    <li><a href="{{p.terminal}}">{{p.name}}</a></li>
+                  {%endifequal%}
+                  {%endfor%}
+                  </ul>
+                </div> 
+              {%endif%}                
+            </td>
+            <td>
+	            <span class="label label-default">在线</span>
+            </td>
+          </tr>
+{%endfor%}
+        </tbody>
+      </table>
+    </div>

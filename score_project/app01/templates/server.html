@@ -1,0 +1,20 @@
+{%extends 'index.html'%}
+
+{%block page-server%}
+<script type="javascript/text">
+$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+</script>
+
+		<div>
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">服务器信息</a></li>
+		  </ul>
+
+		  <div class="tab-content">
+		    <div role="tabpanel" class="tab-pane active" id="profile">{%include 'serverinfo.html'%}</div>
+		  </div>
+		</div>
+{%endblock%}

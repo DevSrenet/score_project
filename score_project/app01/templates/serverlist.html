@@ -1,0 +1,42 @@
+{%extends 'index.html'%}
+
+{%block page-serverlist%}
+<div class="panel panel-primary">      <!-- Default panel contents -->
+ <div class="panel-heading">服务器列表</div>
+	<div class="panel panel-success">
+      <!-- Default panel contents -->
+      <!-- Table -->
+      <table class="table table-striped" >
+        <thead>
+          <tr>
+            <th>server_id</th>
+            <th>platform</th>
+            <th>channel</th>
+            <th>server</th>
+            <th>address</th>
+            <th>version</th>
+            <th>is_new</th>
+            <th>status</th>
+            <th>authority</th>
+          </tr>
+        </thead>
+        <tbody>
+{%for item in listinfo%}
+          <tr>
+            <th scope="row">{{item.server_id}}</th>
+            <td>{{item.platform}}</td>
+            <td>{{item.channel}}</td>
+            <td>{{item.server}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.version}}</td>
+            <td>{{item.is_new}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.authority}}</td>
+          </tr>
+{%endfor%}
+        </tbody>
+      </table>
+    </div>
+ </div>
+</div>
+{%endblock%}
